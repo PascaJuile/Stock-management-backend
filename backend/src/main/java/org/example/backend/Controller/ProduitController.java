@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -24,10 +25,22 @@ public class ProduitController {
         return ResponseEntity.ok(produitResponse);
     }
 
-    @PutMapping("update-produit/{trackingId}")
+    @PutMapping("/update-produit/{trackingId}")
     public ResponseEntity<ProduitResponse> updateProduit(@RequestBody ProduitRequest produitRequest, @PathVariable UUID trackingId){
         ProduitResponse produitResponse = produitService.updateProduit(produitRequest, trackingId);
         return ResponseEntity.ok(produitResponse);
 
+    }
+
+    @GetMapping("/search-produit/{trackingId}")
+    public ResponseEntity<ProduitResponse> getProduit(@PathVariable UUID trackingId){
+        ProduitResponse produitResponse = produitService.getProduit(trackingId);
+        return ResponseEntity.ok(produitResponse);
+    }
+
+    @GetMapping("/liste-produits")
+    public ResponseEntity<List<ProduitResponse>> getAllProduits(){
+        List<ProduitResponse> produitResponse = produitService.getAllProduits();
+        return ResponseEntity.ok(produitResponse);
     }
 }
