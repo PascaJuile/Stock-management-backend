@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-public class Commande implements Serializable {
+public class Commande extends AuditTable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

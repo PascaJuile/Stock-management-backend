@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class Produit implements Serializable {
+public class Produit extends AuditTable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

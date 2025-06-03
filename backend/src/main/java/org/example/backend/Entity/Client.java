@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-public class Client implements Serializable {
+public class Client extends AuditTable implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
