@@ -43,4 +43,10 @@ public class ProduitController {
         List<ProduitResponse> produitResponse = produitService.getAllProduits();
         return ResponseEntity.ok(produitResponse);
     }
+
+    @DeleteMapping("/delete-produit/{trackingId}")
+    public ResponseEntity<Void> deleteProduit(@PathVariable UUID trackingId){
+        produitService.deleteProduit(trackingId);
+        return ResponseEntity.noContent().build();
+    }
 }
