@@ -1,9 +1,6 @@
 package org.example.backend.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -18,6 +15,8 @@ public class Client extends AuditTable implements Serializable {
     private String prenom;
     private String adresse;
     private String telephone;
+    @Column(length = 512)
+    private String token;
 
     public Client() {
         this.trackingId = UUID.randomUUID();
@@ -69,5 +68,13 @@ public class Client extends AuditTable implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

@@ -8,6 +8,7 @@ public class ClientResponse {
     private String prenom;
     private String adresse;
     private String telephone;
+    private String token;
 
     public ClientResponse() {}
 
@@ -49,5 +50,13 @@ public class ClientResponse {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

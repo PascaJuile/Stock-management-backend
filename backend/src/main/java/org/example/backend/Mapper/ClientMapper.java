@@ -20,6 +20,7 @@ public class ClientMapper {
     public ClientResponse toResponse(Client client) {
         ClientResponse clientResponse = new ClientResponse();
         clientResponse.setTrackingId(client.getTrackingId());
+        clientResponse.setToken(client.getToken());
         clientResponse.setNom(client.getNom());
         clientResponse.setPrenom(client.getPrenom());
         clientResponse.setAdresse(client.getAdresse());
