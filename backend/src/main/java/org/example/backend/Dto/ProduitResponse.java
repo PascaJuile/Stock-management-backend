@@ -6,7 +6,7 @@ public class ProduitResponse {
     private UUID trackingId;
     private String nom;
     private String description;
-    private int prixUnitaire;
+    private double prixUnitaire;
     private int quantite;
 
     public ProduitResponse() {}
@@ -35,8 +35,12 @@ public class ProduitResponse {
         this.description = description;
     }
 
-    public int getPrixUnitaire() {
+    public double getPrixUnitaire() {
         return prixUnitaire;
+    }
+
+    public void setPrixUnitaire(double prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
     }
 
     public void setPrixUnitaire(int prixUnitaire) {

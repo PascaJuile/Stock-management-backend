@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 public class Commande extends AuditTable implements Serializable {
@@ -28,10 +26,11 @@ public class Commande extends AuditTable implements Serializable {
             joinColumns = @JoinColumn(name = "commandeId"),
             inverseJoinColumns = @JoinColumn(name = "produitId")
     )
-    private Set<Produit> produits = new HashSet<>();
+    private List<Produit> produits = new ArrayList<>();
 
     public Commande(){
         this.trackingId = UUID.randomUUID();
+        this.date = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -74,11 +73,11 @@ public class Commande extends AuditTable implements Serializable {
         this.client = client;
     }
 
-    public Set<Produit> getProduits() {
+    public List<Produit> getProduits() {
         return produits;
     }
 
-    public void setProduits(Set<Produit> produits) {
+    public void setProduits(List<Produit> produits) {
         this.produits = produits;
     }
 }
