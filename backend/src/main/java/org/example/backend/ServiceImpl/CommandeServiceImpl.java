@@ -15,6 +15,7 @@ import org.example.backend.Service.CommandeService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,6 +62,22 @@ public class CommandeServiceImpl implements CommandeService {
 
         // Conversion en réponse
         return commandeMapper.toResponse(saved);
+    }
+
+    @Override
+    public CommandeResponse searchCommande(UUID trackingId) {
+        Commande commande = commandeRepository.findByTrackingId(trackingId).orElseThrow(
+                () -> new RuntimeException("Commande avec le trackingId" + trackingId + " n'existe pas ")
+        );
+        return commandeMapper.toResponse(commande);
+    }
+
+    @Override
+    public List<CommandeResponse> getAllCommande() {
+        return commandeRepository.findCommandeOrderByDate().
+                stream()
+                .map(commandeMapper::toResponse)
+                .toList();
     }
 
 }
